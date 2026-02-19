@@ -63,6 +63,7 @@
 
     .aa {
         display: flex;
+        justify-content: space-evenly;
     }
 
     .vv {
@@ -134,21 +135,39 @@
             grid-template-columns: auto auto;
         }
     } */
+    /* Add this global fix */
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        overflow-x: hidden;
+        max-width: 100%;
+    }
+
+    /* Update media queries to be more comprehensive */
     @media(max-width: 900px) {
         .ll {
             flex-direction: column;
-            /* Stack vertically */
             gap: 1rem;
+            display: none;
         }
 
         .ll li {
             display: none;
         }
+
         .ll button {
             display: block;
         }
+
+        /* IMPORTANT: Constrain all width classes */
+        [class*="w-"] {
+            max-width: 100% !important;
+            width: auto !important;
+        }
+
         header {
-            /* Stack logo and nav */
             gap: 1rem;
         }
 
@@ -158,18 +177,11 @@
             overflow-x: hidden;
             background-image: none;
             background-color: black;
-            /* Prevent horizontal scroll */
         }
 
         .op p {
             display: none;
         }
-
-        /* FIX #4: Remove fixed widths on mobile */
-        [class*="w-"] {
-            max-width: 100%;
-        }
-
         .aa {
             display: block;
             width: 100%;
@@ -184,7 +196,28 @@
         }
 
         .oo {
-            grid-template-columns: auto auto;
+            grid-template-columns: auto auto auto;
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .oo img {
+            width: 100%;
+            height: auto;
+        }
+
+        .dd {
+            margin-top: 5%;
+        }
+
+        /* .dd p{
+            padding-bottom: 30%;
+        } */
+    }
+
+    @media(max-width: 581px) {
+        .oo {
+            grid-template-columns: 1fr 1fr;
         }
     }
 </style>
@@ -255,11 +288,11 @@
                 made simple. With Mixlr you can broadcast in seconds, stream to your audience anywhere and sound
                 professional every time.</p>
             <span>No engineers, no complicated software, just professionallive audio made simple.</span>
-            <div class="justify-items-center">
-                <button class="bg-white text-red-500 rounded-4xl w-40 h-11 shadow-red-900 shadow-xl self-center-safe"><a
+            <div class="justify-items-center pt-5">
+                <button class="bg-white text-red-500 rounded-4xl w-40 h-11 shadow-red-900 shadow-xl self-center-safe max-md:p-4"><a
                         href="">View plans</a></button>
                 <button
-                    class="bg-red-500 text-white rounded-4xl w-40 h-11 shadow-red-900 shadow-xl place-content-center"><a
+                    class="bg-red-500 text-white rounded-4xl w-40 h-11 shadow-red-900 shadow-xl place-content-center max-md:p-4"><a
                         href="">Get started free</a></button>
             </div>
         </div>
@@ -302,32 +335,37 @@
         <h1>Read our case studies</h1>
     </div>
 
-    <div class="flex justify-evenly pt-5">
+    <div class="">
         <div class="aa">
-            <div class="bg-red-500 w-75 h-120 rounded-2xl justify-evenly">
+            <div class="bg-red-500 w-75 h-120 rounded-2xl">
                 <div>
                     <img src="hero-1408-ed8901b5b457559df79c6fd6a0929f2a1f138cd5ce14d9c9fb2c87705a61f7b8.jpg" alt=""
                         class="rounded-2xl">
                     <p class="text-4xl">Empowering student-led sport-broadcasting Mixlr</p>
-                    <button></button>
+                    <button class="bg-red-300">Read more</button>
                 </div>
             </div>
             <div class=" w-79 h-120 bg-green-500 rounded-2xl">
-                <img src="hero-1408-709484332200ef138fbd00f1b8d9bcd492184cc6741ad98eec2c50deef6f97fc.jpg" alt=""
-                    class="rounded-2xl">
-                <p class="text-4xl">How Yeovil Town FC's broadcast team reached more fans and simplified matchday
-                    commentary
-                    with Mixlr.</p>
-                <button></button>
+                <div class="dd">
+                    <img src="hero-1408-709484332200ef138fbd00f1b8d9bcd492184cc6741ad98eec2c50deef6f97fc.jpg" alt=""
+                        class="rounded-2xl">
+                    <p class="text-4xl">How Yeovil Town FC's broadcast team reached more fans and simplified matchday
+                        commentary
+                        with Mixlr.</p>
+                    <button></button>
+                </div>
             </div>
             <div class="AA">
-                <div class=" w-95 h-120 bg-red-500 rounded-2xl">
-                    <img src="hero-1408-2bb8436e462b3ad69919eecebfcb727626657dfad3726f7fa8d71b4e08a349a6.jpg" alt=""
-                        class="rounded-2xl">
-                    <p class="text-4xl">How DEFQON.1 Delivered Its Full Multi-Stage Experience to a Global Audience with
-                        Mixlr
-                    </p>
-                    <button></button>
+                <div class="dd">
+                    <div class=" w-95 h-120 bg-red-500 rounded-2xl">
+                        <img src="hero-1408-2bb8436e462b3ad69919eecebfcb727626657dfad3726f7fa8d71b4e08a349a6.jpg" alt=""
+                            class="rounded-2xl">
+                        <p class="text-4xl">How DEFQON.1 Delivered Its Full Multi-Stage Experience to a Global Audience
+                            with
+                            Mixlr
+                        </p>
+                        <button></button>
+                    </div>
                 </div>
             </div>
         </div>
